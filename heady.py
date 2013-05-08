@@ -201,16 +201,19 @@ class HeaderReplacer (object):
             if content.startswith('/*'):
                 openBlock = True
 
-            if content.startswith('*/'):
-                openBlock = False
-                line  = ''
-
             # skip over old header on re-write.        
             if inHeader and not content.startswith('//') and not (len(line) == 0 or line == '\n') and not openBlock:    
                 inHeader = False
 
+            if content.startswith('*/'):
+                openBlock = False
+                #line  = ''
+
             if not inHeader:
                 sys.stdout.write(line)
+
+
+
 
 # script main line
 
